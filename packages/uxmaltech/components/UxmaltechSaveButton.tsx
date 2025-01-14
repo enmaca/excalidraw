@@ -2,11 +2,8 @@
 import { useState } from "react";
 import { Button } from "../../excalidraw/components/Button";
 import Spinner from "../../excalidraw/components/Spinner";
-import "./UxmaltechSaveButton.scss";
-import { envUxmaltechCanvasUrl } from "../utils/env/envUxmaltechCanvasUrl";
-import { getCanvasIdFromUrl } from "../utils/canvas/getCanvasIdFromUrl";
 import { ErrorDialog } from "../../excalidraw/components/ErrorDialog";
-import { serializeAsJSON, StoreAction } from "../../excalidraw";
+import { StoreAction } from "../../excalidraw";
 import { useExcalidrawActionManager } from "../../excalidraw/components/App";
 import { saveUxmaltechCanvas } from "../actions";
 
@@ -36,7 +33,7 @@ export function UxmaltechSaveButton() {
             <Button
                 type="button"
                 onSelect={saveCanvas}
-                style={{ position: "relative", width: "auto" }}
+                style={{ position: "relative", width: "auto", marginRight: '0.5em' }}
                 className="collab-button uxmaltech-save-button"
                 disabled={loading}
             >
