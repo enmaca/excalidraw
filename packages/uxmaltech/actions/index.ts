@@ -13,30 +13,30 @@ export const loadUxmaltechCanvas = register({
 	trackEvent: false,
 	predicate: (elements, appState, props, app) => {
 		return (
-		!!app.props.UIOptions.canvasActions.loadScene && !appState.viewModeEnabled
+			!!app.props.UIOptions.canvasActions.loadScene && !appState.viewModeEnabled
 		);
 	},
 	perform: async (elements, appState, _, app) => {
 		try {
-		const {
-			elements: loadedElements,
-			appState: loadedAppState,
-			files,
-		} = await fetchCanvasInfo();
+			const {
+				elements: loadedElements,
+				appState: loadedAppState,
+				files,
+			} = await fetchCanvasInfo();
 
-		return {
-			elements: loadedElements,
-			appState: loadedAppState,
-			files,
-			storeAction: StoreAction.CAPTURE,
-		};
+			return {
+				elements: loadedElements,
+				appState: loadedAppState,
+				files,
+				storeAction: StoreAction.CAPTURE,
+			};
 		} catch (error: any) {
-		return {
-			elements,
-			appState: { ...appState, errorMessage: error.message },
-			files: app.files,
-			storeAction: StoreAction.NONE,
-		};
+			return {
+				elements,
+				appState: { ...appState, errorMessage: error.message },
+				files: app.files,
+				storeAction: StoreAction.NONE,
+			};
 		}
 	},
 });
@@ -48,15 +48,15 @@ export const saveUxmaltechCanvas = register({
 	perform: async (elements, appState, value, app) => {
 		try {
 
-		const serializedCanvas = serializeAsJSON(elements, appState, app.files, 'database');
-		await saveCanvasInfo(serializedCanvas)
+			const serializedCanvas = serializeAsJSON(elements, appState, app.files, 'database');
+			await saveCanvasInfo(serializedCanvas)
 
-		return {
-			storeAction: StoreAction.NONE,
-			appState: appState
-		};
+			return {
+				storeAction: StoreAction.NONE,
+				appState: appState
+			};
 		} catch (error: any) {
-		return { storeAction: StoreAction.NONE, message: error.message };
+			return { storeAction: StoreAction.NONE, message: error.message };
 		}
 	},
 });
