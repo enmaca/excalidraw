@@ -128,6 +128,8 @@ import DebugCanvas, {
 import { AIComponents } from "./components/AI";
 import { ExcalidrawPlusIframeExport } from "./ExcalidrawPlusIframeExport";
 import { isElementLink } from "../packages/excalidraw/element/elementLink";
+import { UxmaltechCanvas } from "../packages/uxmaltech/components/UxmaltechCanvas";
+import { UxmaltechSaveButton } from "../packages/uxmaltech/components/UxmaltechSaveButton";
 
 polyfill();
 
@@ -839,6 +841,7 @@ const ExcalidrawWrapper = () => {
           }
           return (
             <div className="top-right-ui">
+              <UxmaltechSaveButton />
               {collabError.message && <CollabError collabError={collabError} />}
               <LiveCollaborationTrigger
                 isCollaborating={isCollaborating}
@@ -856,6 +859,7 @@ const ExcalidrawWrapper = () => {
           }
         }}
       >
+        <UxmaltechCanvas />
         <AppMainMenu
           onCollabDialogOpen={onCollabDialogOpen}
           isCollaborating={isCollaborating}

@@ -1,0 +1,14 @@
+
+.uxmaltech-loading-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--default-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1em;
+    z-index: 100;
+}
+
